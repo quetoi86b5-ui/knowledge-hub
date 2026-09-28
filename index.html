@@ -968,7 +968,7 @@ main.content-area {
   </div>
 
   <div class="header-actions">
-    <button class="btn-donate" id="btn-header-donate" title="Ủng hộ tác giả một ly cà phê">
+    <button class="btn-donate" id="btn-header-donate" onclick="openDonateModal()" title="Ủng hộ tác giả một ly cà phê">
       <span>☕</span>
       <span>Tặng ly cà phê</span>
     </button>
@@ -1076,9 +1076,9 @@ main.content-area {
 <!-- DONATE MODAL                                   -->
 <!-- ============================================== -->
 <div class="donate-modal" id="donate-modal">
-  <div class="backdrop active" id="donate-backdrop" style="display:block;"></div>
+  <div class="backdrop active" id="donate-backdrop" onclick="closeDonateModal()" style="display:block;"></div>
   <div class="donate-card">
-    <button class="btn-close-modal" id="btn-close-donate">✕</button>
+    <button class="btn-close-modal" id="btn-close-donate" onclick="closeDonateModal()">✕</button>
     <div class="donate-icon">☕</div>
     <div class="donate-title">Tặng Tác Giả Ly Cà Phê</div>
     <div class="donate-desc">
@@ -1391,8 +1391,8 @@ function closeDonateModal() {
 }
 
 if (btnHeaderDonate) btnHeaderDonate.onclick = openDonateModal;
-if (btnCloseDonate) btnCloseDonate.onclick = closeDonateModal;
-if (donateBackdrop) donateBackdrop.onclick = closeDonateModal;
+if (btnCloseDonate) btnCloseDonate.onclick = (e) => { e.stopPropagation(); closeDonateModal(); };
+if (donateBackdrop) donateBackdrop.onclick = (e) => { e.stopPropagation(); closeDonateModal(); };
 
 function copyText(text, btn) {
   navigator.clipboard.writeText(text).then(() => {
