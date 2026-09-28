@@ -1072,6 +1072,47 @@ main.content-area {
   </main>
 </div>
 
+<!-- ============================================== -->
+<!-- DONATE MODAL                                   -->
+<!-- ============================================== -->
+<div class="donate-modal" id="donate-modal">
+  <div class="backdrop active" id="donate-backdrop" style="display:block;"></div>
+  <div class="donate-card">
+    <button class="btn-close-modal" id="btn-close-donate">✕</button>
+    <div class="donate-icon">☕</div>
+    <div class="donate-title">Tặng Tác Giả Ly Cà Phê</div>
+    <div class="donate-desc">
+      Nếu bạn cảm thấy khóa học và tài liệu này mang lại giá trị thực chiến, hãy gửi tặng mình một ly cà phê để tiếp thêm năng lượng biên soạn thêm nhiều khóa học đỉnh cao nhé!
+    </div>
+
+    <div class="qr-box">
+      <img src="assets/donate-qr.jpg" alt="Mã VietQR Ngân Hàng VIB">
+    </div>
+
+    <div class="bank-info-box">
+      <div class="bank-row">
+        <span class="bank-label">Ngân hàng:</span>
+        <span class="bank-val">VIB (Quốc Tế)</span>
+      </div>
+      <div class="bank-row">
+        <span class="bank-label">Số tài khoản:</span>
+        <span class="bank-val">
+          <span>055298670</span>
+          <button class="btn-copy" onclick="copyText('055298670', this)">Copy</button>
+        </span>
+      </div>
+      <div class="bank-row">
+        <span class="bank-label">Nội dung:</span>
+        <span class="bank-val">Tang ly ca phe</span>
+      </div>
+    </div>
+
+    <div style="font-size:12px; color:var(--text-dim);">
+      Cảm ơn sự đồng hành và ủng hộ quý báu của bạn! ❤️
+    </div>
+  </div>
+</div>
+
 <script>
 // Telegram WebApp Setup
 let tg = null;
@@ -1371,46 +1412,6 @@ function copyText(text, btn) {
 initHub();
 </script>
 
-<!-- ============================================== -->
-<!-- DONATE MODAL                                   -->
-<!-- ============================================== -->
-<div class="donate-modal" id="donate-modal">
-  <div class="backdrop active" id="donate-backdrop" style="display:block;"></div>
-  <div class="donate-card">
-    <button class="btn-close-modal" id="btn-close-donate">✕</button>
-    <div class="donate-icon">☕</div>
-    <div class="donate-title">Tặng Tác Giả Ly Cà Phê</div>
-    <div class="donate-desc">
-      Nếu bạn cảm thấy khóa học và tài liệu này mang lại giá trị thực chiến, hãy gửi tặng mình một ly cà phê để tiếp thêm năng lượng biên soạn thêm nhiều khóa học đỉnh cao nhé!
-    </div>
-
-    <div class="qr-box">
-      <img src="assets/donate-qr.jpg" alt="Mã VietQR Ngân Hàng VIB">
-    </div>
-
-    <div class="bank-info-box">
-      <div class="bank-row">
-        <span class="bank-label">Ngân hàng:</span>
-        <span class="bank-val">VIB (Quốc Tế)</span>
-      </div>
-      <div class="bank-row">
-        <span class="bank-label">Số tài khoản:</span>
-        <span class="bank-val">
-          <span>055298670</span>
-          <button class="btn-copy" onclick="copyText('055298670', this)">Copy</button>
-        </span>
-      </div>
-      <div class="bank-row">
-        <span class="bank-label">Nội dung:</span>
-        <span class="bank-val">Tang ly ca phe</span>
-      </div>
-    </div>
-
-    <div style="font-size:12px; color:var(--text-dim);">
-      Cảm ơn sự đồng hành và ủng hộ quý báu của bạn! ❤️
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
