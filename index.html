@@ -754,6 +754,206 @@ main.content-area {
     max-width: 100%;
   }
 }
+
+/* Donate Modal & Button */
+.btn-donate {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+
+.btn-donate:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
+.donate-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.donate-modal.active {
+  display: flex;
+}
+
+.donate-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 20px;
+  max-width: 420px;
+  width: 100%;
+  padding: 28px 24px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  z-index: 101;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+  color: #fff;
+  background: var(--bg-highlight);
+}
+
+.donate-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.donate-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.donate-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.qr-box {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 14px;
+  display: inline-block;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  margin-bottom: 18px;
+  border: 2px solid #f59e0b;
+}
+
+.qr-box img {
+  width: 220px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.bank-info-box {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.bank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.bank-row:last-child {
+  margin-bottom: 0;
+}
+
+.bank-label {
+  color: var(--text-dim);
+}
+
+.bank-val {
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-copy {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-copy:hover {
+  background: var(--accent);
+  color: #0a0f1d;
+}
+
+/* Callout donate at bottom of each lesson */
+.lesson-donate-box {
+  margin-top: 48px;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(239, 68, 68, 0.08) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.lesson-donate-text h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fbbf24;
+  margin-bottom: 4px;
+}
+
+.lesson-donate-text p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0 !important;
+}
+
 </style>
 </head>
 <body>
@@ -768,6 +968,10 @@ main.content-area {
   </div>
 
   <div class="header-actions">
+    <button class="btn-donate" id="btn-header-donate" title="Ủng hộ tác giả một ly cà phê">
+      <span>☕</span>
+      <span>Tặng ly cà phê</span>
+    </button>
     <button class="btn-hub" id="btn-back-hub" style="display:none;">
       <span>← Thư viện khóa học</span>
     </button>
@@ -839,6 +1043,19 @@ main.content-area {
           <div class="spinner"></div>
           <div>Đang nạp dữ liệu bài học chuyên sâu...</div>
         </div>
+      </div>
+
+      
+      <!-- Donate Footer Box -->
+      <div class="lesson-donate-box">
+        <div class="lesson-donate-text">
+          <h4>☕ Bạn thấy bài học này hữu ích?</h4>
+          <p>Hãy gửi tặng tác giả 1 ly cà phê để tiếp thêm động lực cập nhật kiến thức mới nhé!</p>
+        </div>
+        <button class="btn-donate" onclick="openDonateModal()">
+          <span>☕</span>
+          <span>Tặng cà phê</span>
+        </button>
       </div>
 
       <div class="pagination" id="pagination-nav">
@@ -1116,8 +1333,84 @@ hubSearchInput.oninput = (e) => {
   renderCourseGrid(activeCat, e.target.value);
 };
 
+
+// Donate Modal Logic
+const donateModal = document.getElementById('donate-modal');
+const btnHeaderDonate = document.getElementById('btn-header-donate');
+const btnCloseDonate = document.getElementById('btn-close-donate');
+const donateBackdrop = document.getElementById('donate-backdrop');
+
+function openDonateModal() {
+  donateModal.classList.add('active');
+  if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
+}
+
+function closeDonateModal() {
+  donateModal.classList.remove('active');
+}
+
+if (btnHeaderDonate) btnHeaderDonate.onclick = openDonateModal;
+if (btnCloseDonate) btnCloseDonate.onclick = closeDonateModal;
+if (donateBackdrop) donateBackdrop.onclick = closeDonateModal;
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Đã chép!';
+    btn.style.background = '#34d399';
+    btn.style.color = '#0a0f1d';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
 // Start
 initHub();
 </script>
+
+<!-- ============================================== -->
+<!-- DONATE MODAL                                   -->
+<!-- ============================================== -->
+<div class="donate-modal" id="donate-modal">
+  <div class="backdrop active" id="donate-backdrop" style="display:block;"></div>
+  <div class="donate-card">
+    <button class="btn-close-modal" id="btn-close-donate">✕</button>
+    <div class="donate-icon">☕</div>
+    <div class="donate-title">Tặng Tác Giả Ly Cà Phê</div>
+    <div class="donate-desc">
+      Nếu bạn cảm thấy khóa học và tài liệu này mang lại giá trị thực chiến, hãy gửi tặng mình một ly cà phê để tiếp thêm năng lượng biên soạn thêm nhiều khóa học đỉnh cao nhé!
+    </div>
+
+    <div class="qr-box">
+      <img src="assets/donate-qr.jpg" alt="Mã VietQR Ngân Hàng VIB">
+    </div>
+
+    <div class="bank-info-box">
+      <div class="bank-row">
+        <span class="bank-label">Ngân hàng:</span>
+        <span class="bank-val">VIB (Quốc Tế)</span>
+      </div>
+      <div class="bank-row">
+        <span class="bank-label">Số tài khoản:</span>
+        <span class="bank-val">
+          <span>055298670</span>
+          <button class="btn-copy" onclick="copyText('055298670', this)">Copy</button>
+        </span>
+      </div>
+      <div class="bank-row">
+        <span class="bank-label">Nội dung:</span>
+        <span class="bank-val">Tang ly ca phe</span>
+      </div>
+    </div>
+
+    <div style="font-size:12px; color:var(--text-dim);">
+      Cảm ơn sự đồng hành và ủng hộ quý báu của bạn! ❤️
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
