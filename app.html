@@ -1115,6 +1115,75 @@ main.content-area {
   .btn-hub span.short-text { display: none; }
   .btn-donate span.short-text { display: none; }
 }
+
+/* Sharp Image Rendering & Lightbox */
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 18px 0;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-body img:active {
+  transform: scale(0.98);
+}
+
+/* Lightbox Modal */
+.image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  cursor: zoom-out;
+}
+
+.image-lightbox.active {
+  display: flex;
+}
+
+.image-lightbox img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  animation: zoomInLight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomInLight {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -1205,6 +1274,7 @@ main.content-area {
         </div>
       </div>
 
+      <!-- NỘI DUNG CHÍNH BÀI HỌC -->
       <div class="article-body" id="lesson-body">
         <div class="spinner-wrap">
           <div class="spinner"></div>
@@ -1212,8 +1282,8 @@ main.content-area {
         </div>
       </div>
 
-      <!-- 1. LIỀN MẠCH HỌC TẬP: Nút Bài Tiếp Theo & Bài Trước đưa lên ngay sau nội dung -->
-      <div class="pagination" id="pagination-nav">
+      <!-- NÚT CHUYỂN BÀI NGAY CUỐI NỘI DUNG CHÍNH (LIỀN MẠCH TUYỆT ĐỐI) -->
+      <div class="pagination" id="pagination-nav" style="margin-top:24px; padding-top:20px;">
         <div class="page-btn prev" id="btn-prev" style="visibility:hidden;">
           <span class="label">← Bài trước</span>
           <span class="title" id="prev-title">-</span>
@@ -1224,8 +1294,11 @@ main.content-area {
         </div>
       </div>
 
-      <!-- 2. TẶNG CÀ PHÊ: Đưa xuống dưới phần chuyển bài -->
-      <div class="lesson-donate-box" style="margin-top:32px;">
+      <!-- PHỤ LỤC SLIDE PHÓNG TO (TÁCH BIỆT DƯỚI CÙNG NẾU CÓ) -->
+      <div id="lesson-appendix" style="display:none; margin-top:36px;"></div>
+
+      <!-- KHUNG TẶNG CÀ PHÊ (ĐẶT Ở ĐÁY) -->
+      <div class="lesson-donate-box" style="margin-top:28px;">
         <div class="lesson-donate-text">
           <h4>☕ Bạn thấy bài học này hữu ích?</h4>
           <p>Hãy gửi tặng tác giả 1 ly cà phê để tiếp thêm động lực cập nhật kiến thức mới nhé!</p>
@@ -1252,6 +1325,15 @@ main.content-area {
     <div class="divider"></div>
     <button id="mb-btn-next" onclick="goToNextLesson()">Sau ➡</button>
   </div>
+</div>
+
+
+<!-- ============================================== -->
+<!-- IMAGE LIGHTBOX MODAL                           -->
+<!-- ============================================== -->
+<div class="image-lightbox" id="image-lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close-btn" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Xem ảnh phóng to">
 </div>
 
 <!-- ============================================== -->
@@ -1507,6 +1589,23 @@ function loadLesson(idx) {
   lessonBody.innerHTML = l.html;
   document.getElementById('main-content').scrollTop = 0;
 
+  // Handle optional Appendix (Zoomed Slide)
+  const appContainer = document.getElementById('lesson-appendix');
+  if (l.appendixHtml && l.appendixHtml.trim()) {
+    appContainer.innerHTML = l.appendixHtml;
+    appContainer.style.display = 'block';
+  } else {
+    appContainer.innerHTML = '';
+    appContainer.style.display = 'none';
+  }
+
+  // Attach Lightbox Zoom for all images
+  setTimeout(() => {
+    document.querySelectorAll('.article-body img, #lesson-appendix img').forEach(img => {
+      img.onclick = () => openLightbox(img.src);
+    });
+  }, 100);
+
   // Pagination updates
   if (idx > 0) {
     btnPrev.style.visibility = 'visible';
@@ -1577,6 +1676,21 @@ hubSearchInput.oninput = (e) => {
   const activeCat = document.querySelector('.cat-pill.active').dataset.cat;
   renderCourseGrid(activeCat, e.target.value);
 };
+
+
+// Lightbox Modal Logic
+const imageLightbox = document.getElementById('image-lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(src) {
+  lightboxImg.src = src;
+  imageLightbox.classList.add('active');
+  if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+}
+
+function closeLightbox() {
+  imageLightbox.classList.remove('active');
+}
 
 // Donate Modal Logic
 const donateModal = document.getElementById('donate-modal');
