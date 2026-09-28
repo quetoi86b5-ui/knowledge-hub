@@ -1212,18 +1212,7 @@ main.content-area {
         </div>
       </div>
 
-      <!-- Donate Footer Box -->
-      <div class="lesson-donate-box">
-        <div class="lesson-donate-text">
-          <h4>☕ Bạn thấy bài học này hữu ích?</h4>
-          <p>Hãy gửi tặng tác giả 1 ly cà phê để tiếp thêm động lực cập nhật kiến thức mới nhé!</p>
-        </div>
-        <button class="btn-donate" onclick="openDonateModal()">
-          <span>☕</span>
-          <span>Tặng cà phê</span>
-        </button>
-      </div>
-
+      <!-- 1. LIỀN MẠCH HỌC TẬP: Nút Bài Tiếp Theo & Bài Trước đưa lên ngay sau nội dung -->
       <div class="pagination" id="pagination-nav">
         <div class="page-btn prev" id="btn-prev" style="visibility:hidden;">
           <span class="label">← Bài trước</span>
@@ -1234,6 +1223,24 @@ main.content-area {
           <span class="title" id="next-title">-</span>
         </div>
       </div>
+
+      <!-- 2. TẶNG CÀ PHÊ: Đưa xuống dưới phần chuyển bài -->
+      <div class="lesson-donate-box" style="margin-top:32px;">
+        <div class="lesson-donate-text">
+          <h4>☕ Bạn thấy bài học này hữu ích?</h4>
+          <p>Hãy gửi tặng tác giả 1 ly cà phê để tiếp thêm động lực cập nhật kiến thức mới nhé!</p>
+        </div>
+        <button class="btn-donate" onclick="openDonateModal()">
+          <span>☕</span>
+          <span>Tặng cà phê</span>
+        </button>
+      </div>
+
+      <!-- 3. CHÚ THÍCH BẢN QUYỀN & NGUỒN TƯ LIỆU: Đưa xuống tận cùng Footer -->
+      <footer class="reader-footer-copyright" style="margin-top:36px; padding:20px 0; border-top:1px dashed var(--border-color); text-align:center; font-size:12px; color:var(--text-dim); line-height:1.6;">
+        <div>📚 Nội dung thuộc chương trình đào tạo chuyên sâu <strong>Topical Maps Unlocked 2.0</strong></div>
+        <div style="margin-top:4px;">Biên soạn & hệ thống hóa kiến thức thực chiến bởi đội ngũ R&D • Nghiêm cấm sao chép thương mại trái phép</div>
+      </footer>
     </div>
   </main>
 
