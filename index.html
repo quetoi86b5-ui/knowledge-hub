@@ -943,12 +943,13 @@ function renderCourseGrid(catFilter = 'all', searchFilter = '') {
         <span>•</span>
         <span>⏱ ${c.duration}</span>
       </div>
-      <button class="btn-enter" ${isReady ? '' : 'disabled'}>
+      <button class="btn-enter" ${isReady ? '' : 'disabled'} onclick="event.stopPropagation(); openCourse('${c.id}')">
         ${isReady ? 'Vào học ngay ➔' : 'Đang biên soạn...'}
       </button>
     `;
 
     if (isReady) {
+      card.style.cursor = 'pointer';
       card.onclick = () => openCourse(c.id);
     }
 
