@@ -1,0 +1,66 @@
+[
+  {
+    "id": "topical-maps",
+    "title": "Topical Maps Unlocked 2.0",
+    "tagline": "Chiến lược Topic Cluster, Xây dựng Thực thể Entity & Thống trị Google SERP bằng Semantic Search",
+    "category": "SEO & Semantics",
+    "instructor": "Julian Goldie",
+    "badge": "Hot • 2026 Updated",
+    "badgeColor": "#38bdf8",
+    "level": "Thực chiến & Chuyên sâu",
+    "lessonsCount": 41,
+    "modulesCount": 11,
+    "duration": "~8.5 giờ học",
+    "icon": "⚡",
+    "color": "from-sky-500 to-indigo-600",
+    "dataFile": "courses/topical-maps/data.json",
+    "highlights": [
+      "Phương pháp lập Topical Map chuẩn Semantic Google",
+      "Khai thác thực thể (Entity) & Knowledge Graph",
+      "Kỹ thuật đo lường SERP Similarity & chống Keyword Cannibalization",
+      "Hệ thống hóa 30+ sơ đồ kiến trúc luồng link nội bộ (Internal Link Architecture)"
+    ]
+  },
+  {
+    "id": "ai-seo-mastery",
+    "title": "AI SEO & Content Scale Mastery",
+    "tagline": "Tự động hóa sản xuất nội dung quy mô lớn kết hợp AI Agents và Semantic Search",
+    "category": "AI Automation",
+    "instructor": "Đội ngũ R&D",
+    "badge": "Coming Soon",
+    "badgeColor": "#a855f7",
+    "level": "Nâng cao",
+    "lessonsCount": 24,
+    "modulesCount": 6,
+    "duration": "~5 giờ học",
+    "icon": "🤖",
+    "color": "from-purple-500 to-pink-600",
+    "dataFile": "",
+    "highlights": [
+      "Xây dựng Pipeline tự động viết bài dựa trên Topical Map",
+      "Kiểm duyệt chất lượng E-E-A-T tự động bằng Prompt Chaining",
+      "Tối ưu Indexing & Theo dõi thứ hạng theo thời gian thực"
+    ]
+  },
+  {
+    "id": "programmatic-seo",
+    "title": "Programmatic SEO Architecture",
+    "tagline": "Xây dựng hàng chục nghìn trang Landing Page tự động từ cơ sở dữ liệu và API",
+    "category": "Technical SEO",
+    "instructor": "Chuyên gia Kỹ thuật",
+    "badge": "Sắp ra mắt",
+    "badgeColor": "#10b981",
+    "level": "Chuyên gia",
+    "lessonsCount": 18,
+    "modulesCount": 5,
+    "duration": "~4 giờ học",
+    "icon": "🚀",
+    "color": "from-emerald-500 to-teal-600",
+    "dataFile": "",
+    "highlights": [
+      "Thiết kế Schema Markup & Dữ liệu có cấu trúc cấp tiến",
+      "Tối ưu Core Web Vitals cho hàng triệu trang",
+      "Cơ chế Indexing nhanh với Indexing API"
+    ]
+  }
+]
