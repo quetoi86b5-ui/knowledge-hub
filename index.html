@@ -1031,6 +1031,8 @@ async function initHub() {
     const res = await fetch(`courses/manifest.json?v=${Date.now()}`, { cache: 'no-store' });
     coursesManifest = await res.json();
     renderCourseGrid();
+    const requestedCourse = new URLSearchParams(window.location.search).get('course');
+    if (requestedCourse) openCourse(requestedCourse);
   } catch (err) {
     console.error("Failed to load courses manifest", err);
   }
