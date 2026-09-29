@@ -1049,7 +1049,7 @@ const mbBtnNext = document.getElementById('mb-btn-next');
 // 1. Fetch Manifest
 async function initHub() {
   try {
-    const res = await fetch('courses/manifest.json');
+    const res = await fetch(`courses/manifest.json?v=${Date.now()}`, { cache: 'no-store' });
     coursesManifest = await res.json();
     renderCourseGrid();
   } catch (err) {
@@ -1121,7 +1121,7 @@ async function openCourse(courseId) {
 
   // Fetch Course Data if not cached
   try {
-    const res = await fetch(c.dataFile);
+    const res = await fetch(`${c.dataFile}?v=${Date.now()}`, { cache: 'no-store' });
     currentCourseData = await res.json();
 
     allLessons = [];
