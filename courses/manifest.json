@@ -1,5 +1,29 @@
 [
   {
+    "id": "smc-trading-masterclass",
+    "title": "SMC & ICT Trading Masterclass: Nghệ Thuật Đọc Dòng Tiền & Điểm Vào Lệnh",
+    "category": "Trading & Financial Markets",
+    "icon": "📈",
+    "color": "from-amber-500 to-rose-600",
+    "badge": "New • 2026 Thực Chiến",
+    "badgeColor": "#f59e0b",
+    "tagline": "Làm chủ Smart Money Concepts (SMC) & ICT: Đọc vị thanh khoản, săn đỉnh đáy, mô hình AMD và tối ưu điểm vào lệnh thực chiến",
+    "instructor": "SMC Senior Trader",
+    "duration": "~3.5 giờ học",
+    "level": "Thực chiến Chuyên sâu",
+    "modulesCount": 6,
+    "lessonsCount": 16,
+    "highlights": [
+      "Bản chất thanh khoản Liquidity Sweep, phân biệt phá vỡ thật và giả",
+      "Chu kỳ dịch chuyển vĩnh cửu giữa ERL (Swing High/Low) và IRL (FVG)",
+      "Quy tắc chọn lọc FVG tạo MSS/CHoCH - Loại bỏ bẫy rủi ro khi trend đã rõ",
+      "Chiến lược giao dịch theo phiên (Asian/London/NY) & Mô hình AMD thực chiến",
+      "Kỹ thuật SMT Divergence cao cấp giữa Vàng, DXY và cặp tiền tệ",
+      "Case Study mổ xẻ lệnh Buy ngược đám đông & Tâm lý giữ vững Trading Plan"
+    ],
+    "dataFile": "courses/smc-trading-masterclass/data.json"
+  },
+  {
     "id": "topical-maps",
     "title": "Topical Map",
     "tagline": "Chiến lược Topic Cluster, Xây dựng Thực thể Entity & Thống trị Google SERP bằng Semantic Search",
