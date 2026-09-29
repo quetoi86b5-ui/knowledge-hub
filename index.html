@@ -962,19 +962,9 @@ main.content-area {
         </div>
       </div>
 
-      <!-- PHỤ LỤC SLIDE PHÓNG TO (TÁCH BIỆT DƯỚI CÙNG NẾU CÓ) -->
-      <div id="lesson-appendix" style="display:none; margin-top:36px;"></div>
 
       <!-- KHUNG TẶNG CÀ PHÊ (ĐẶT Ở ĐÁY) -->
 
-
-<!-- ============================================== -->
-<!-- IMAGE LIGHTBOX MODAL                           -->
-<!-- ============================================== -->
-<div class="image-lightbox" id="image-lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close-btn" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="Xem ảnh phóng to">
-</div>
 
 <!-- ============================================== -->
 <script>
@@ -1192,23 +1182,6 @@ function loadLesson(idx) {
   lessonBody.innerHTML = l.html;
   document.getElementById('main-content').scrollTop = 0;
 
-  // Handle optional Appendix (Zoomed Slide)
-  const appContainer = document.getElementById('lesson-appendix');
-  if (l.appendixHtml && l.appendixHtml.trim()) {
-    appContainer.innerHTML = l.appendixHtml;
-    appContainer.style.display = 'block';
-  } else {
-    appContainer.innerHTML = '';
-    appContainer.style.display = 'none';
-  }
-
-  // Attach Lightbox Zoom for all images
-  setTimeout(() => {
-    document.querySelectorAll('.article-body img, #lesson-appendix img').forEach(img => {
-      img.onclick = () => openLightbox(img.src);
-    });
-  }, 100);
-
   // Pagination updates
   if (idx > 0) {
     btnPrev.style.visibility = 'visible';
@@ -1275,27 +1248,6 @@ hubSearchInput.oninput = (e) => {
   const activeCat = document.querySelector('.cat-pill.active').dataset.cat;
   renderCourseGrid(activeCat, e.target.value);
 };
-
-
-// Lightbox Modal Logic
-const imageLightbox = document.getElementById('image-lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-
-function openLightbox(src) {
-  lightboxImg.src = src;
-  imageLightbox.classList.add('active');
-  if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
-}
-
-function closeLightbox() {
-  imageLightbox.classList.remove('active');
-}
-
-
-
-
-
-
 
 
 
