@@ -1102,7 +1102,7 @@ async function openCourse(courseId) {
     viewReader.classList.add('active');
     btnBackHub.style.display = 'flex';
     btnToggle.style.display = 'flex';
-    mobileBottomBar.classList.add('active');
+    mobileBottomBar?.classList.add('active');
     bcCourse.textContent = c.title;
     sidebarCourseTitle.textContent = `${c.title}`;
 
@@ -1131,7 +1131,7 @@ function showHub() {
   viewHub.classList.add('active');
   btnBackHub.style.display = 'none';
   btnToggle.style.display = 'none';
-  mobileBottomBar.classList.remove('active');
+  mobileBottomBar?.classList.remove('active');
   sidebar.classList.remove('open');
   backdrop.classList.remove('active');
 }
@@ -1214,24 +1214,20 @@ function loadLesson(idx) {
     btnPrev.style.visibility = 'visible';
     prevTitle.textContent = allLessons[idx - 1].title;
     btnPrev.onclick = () => loadLesson(idx - 1);
-    mbBtnPrev.style.opacity = '1';
-    mbBtnPrev.disabled = false;
+    if (mbBtnPrev) { mbBtnPrev.style.opacity = '1'; mbBtnPrev.disabled = false; }
   } else {
     btnPrev.style.visibility = 'hidden';
-    mbBtnPrev.style.opacity = '0.35';
-    mbBtnPrev.disabled = true;
+    if (mbBtnPrev) { mbBtnPrev.style.opacity = '0.35'; mbBtnPrev.disabled = true; }
   }
 
   if (idx < allLessons.length - 1) {
     btnNext.style.visibility = 'visible';
     nextTitle.textContent = allLessons[idx + 1].title;
     btnNext.onclick = () => loadLesson(idx + 1);
-    mbBtnNext.style.opacity = '1';
-    mbBtnNext.disabled = false;
+    if (mbBtnNext) { mbBtnNext.style.opacity = '1'; mbBtnNext.disabled = false; }
   } else {
     btnNext.style.visibility = 'hidden';
-    mbBtnNext.style.opacity = '0.35';
-    mbBtnNext.disabled = true;
+    if (mbBtnNext) { mbBtnNext.style.opacity = '0.35'; mbBtnNext.disabled = true; }
   }
 
   const pct = Math.round(((idx + 1) / allLessons.length) * 100);
