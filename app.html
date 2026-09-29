@@ -1109,22 +1109,23 @@ async function openCourse(courseId) {
   const c = coursesManifest.find(x => x.id === courseId);
   if (!c || !c.dataFile) return;
 
-  currentCourse = c;
-
-  // Switch View
-  viewHub.classList.remove('active');
-  viewReader.classList.add('active');
-  btnBackHub.style.display = 'flex';
-  btnToggle.style.display = 'flex';
-  mobileBottomBar.classList.add('active');
-  bcCourse.textContent = c.title;
-
-  sidebarCourseTitle.textContent = `${c.title}`;
-
-  // Fetch Course Data if not cached
+  // Fetch course data before switching views so a slow/failed request never leaves a blank reader.
   try {
-    const res = await fetch(`${c.dataFile}?v=${Date.now()}`, { cache: 'no-store' });
-    currentCourseData = await res.json();
+    const res = await fetch(`${c.dataFile}?v=${Date.now()}`, { cache: 'no-store', signal: AbortSignal.timeout(15000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const nextCourseData = await res.json();
+    if (!Array.isArray(nextCourseData) || !nextCourseData.length) throw new Error('Dữ liệu khóa học trống hoặc sai định dạng');
+    currentCourse = c;
+    currentCourseData = nextCourseData;
+
+    // Switch View only after data is ready.
+    viewHub.classList.remove('active');
+    viewReader.classList.add('active');
+    btnBackHub.style.display = 'flex';
+    btnToggle.style.display = 'flex';
+    mobileBottomBar.classList.add('active');
+    bcCourse.textContent = c.title;
+    sidebarCourseTitle.textContent = `${c.title}`;
 
     allLessons = [];
     currentCourseData.forEach(m => {
